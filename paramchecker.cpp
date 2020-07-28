@@ -1,9 +1,10 @@
-bool VitalIsOk(float value, float minVal, float maxVal){
-  bool retValue = true; 
-  if((value < minVal) || (value > maxVal) ) {
-    retValue =false; 
+bool VitalIsOk(float vitalVal, float minVal, float maxVal) {
+
+  bool boolVal = true;
+  if ((vitalVal < minVal) || (vitalVal > maxVal)) {
+    boolVal = false;
   }
-  return retValue;
+  return boolVal;
 }
 
 bool isbpmOk (float bpm)
