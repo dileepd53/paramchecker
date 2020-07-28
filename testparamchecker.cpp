@@ -9,8 +9,7 @@ TEST(VitalsTest, SPO2) {
     ASSERT_EQ(false, vitalsAreOk(100, 40, 50));
 }
 
-TEST(VitalsTest, RESP)
-{
+TEST(VitalsTest, RESPRATE) {
    ASSERT_EQ(true, vitalsAreOk(100, 40, 50));
 }
  
