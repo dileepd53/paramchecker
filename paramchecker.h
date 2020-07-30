@@ -42,5 +42,6 @@ class VitalValueCheck: public IVitalCheck {
     }
   private:
     float m_alarmValue;
+};
 
-  std::vector<bool> vitalsAreOk(const std::vector<Measurement>& measurements);
+std::vector<bool> vitalsAreOk(const std::vector<Measurement>& measurements);
