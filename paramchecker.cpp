@@ -1,30 +1,20 @@
-bool VitalIsOk(float vitalVal, float minVal, float maxVal) {
+#include "paramchecker.h"
+#include <vector>
+#include <iostream>
 
-  bool boolVal = true;
-  if ((vitalVal < minVal) || (vitalVal > maxVal)) {
-    boolVal = false;
+IVitalCheck* vitalCheckers[] = {
+  [bpm] = new VitalRangeCheck(70, 150),
+  [spo2] = new VitalRangeCheck(80, 100),
+  [respRate] = new VitalRangeCheck(30, 60),
+  [avgECG] = new VitalValueCheck(0),
+};
+
+std::vector<bool> vitalsAreOk(const std::vector<Measurement>& measurements) {
+  std::vector<bool> results;
+  for(auto t = measurements.begin(); t != measurements.end(); t++) {
+    bool vitalResult = vitalCheckers[t->id]->measurementIsOk(t->measured_value);
+    std::cout << "Vital-check result is " << vitalResult << std::endl;
   }
-  return boolVal;
+  return results;
 }
-
-bool isbpmOk (float bpm)
-{
-  return (VitalIsOk(bpm, 70, 150));
-}
-
-bool isSpo2Ok (float spo2)
-{
-  return (VitalIsOk(spo2, 80, 100));
-}
-
-bool isRespRate (float respRate)
-{
-  return (VitalIsOk(respRate, 30, 60));
-}
-
-bool vitalsAreOk(float bpm, float spo2, float respRate) {
-   
-  return (isbpmOk(bpm) && isSpo2Ok(spo2) && isRespRate(respRate));
-}
-
 
